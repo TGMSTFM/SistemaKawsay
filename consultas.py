@@ -1,12 +1,3 @@
-"""
-consultas.py
-Paradigma: Funcional
-
-Resuelve consultas específicas de forma declarativa con filter() y
-expresiones, sin modificar en ningún momento las colecciones originales
-(pacientes, medicos, citas, historial).
-"""
-
 from modelos import Medico, Paciente
 
 
