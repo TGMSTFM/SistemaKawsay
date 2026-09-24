@@ -1,14 +1,3 @@
-"""
-main.py
-Integración multiparadigma
-
-Punto de entrada del prototipo Kawsay. Usa:
-- registro.py  (estructurado) para las operaciones de registro y el menú,
-- modelos.py   (POO) para las entidades Paciente, Medico y Cita,
-- consultas.py (funcional) para las búsquedas declarativas.
-
-Corresponde al Hito 4 (Integración: citas e historial) del cronograma.
-"""
 
 from registro import (
     registrar_paciente,
