@@ -1,14 +1,3 @@
-"""
-modelos.py
-Paradigma: Orientado a Objetos (POO)
-
-Define las clases del dominio del Sistema Kawsay: Paciente, Medico y Cita.
-Los atributos se marcan con guion bajo (encapsulamiento) y se exponen
-únicamente mediante propiedades de solo lectura, tal como se documenta
-en el diagrama UML (Figura 1) del informe.
-"""
-
-
 class Paciente:
     """Representa a un paciente ficticio registrado en el sistema."""
 
