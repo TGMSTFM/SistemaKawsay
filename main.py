@@ -69,8 +69,10 @@ def main():
 
         elif opcion == "5":
             especialidad = input("Especialidad a buscar: ").strip()
+
             resultados = buscar_medicos_por_especialidad(
-                medicos, especialidad
+                medicos,
+                especialidad
             )
 
             if resultados:
@@ -89,7 +91,7 @@ def main():
             else:
                 print("El paciente no tiene atenciones registradas.")
 
-        elif opcion == "0":
+        elif opcion == "7":
             print("Cerrando Sistema Kawsay.")
             break
 
@@ -97,5 +99,5 @@ def main():
             print("Opción no válida.")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
