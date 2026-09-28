@@ -1,5 +1,5 @@
 class Paciente:
-    def _init_(self, codigo, nombre, edad):
+    def __init__(self, codigo, nombre, edad):
         self._codigo = codigo
         self._nombre = nombre
         self._edad = edad
@@ -17,7 +17,7 @@ class Paciente:
 
 
 class Medico:
-    def _init_(self, codigo, nombre, especialidad):
+    def __init__(self, codigo, nombre, especialidad):
         self._codigo = codigo
         self._nombre = nombre
         self._especialidad = especialidad
@@ -35,7 +35,7 @@ class Medico:
 
 
 class Cita:
-    def _init_(self, codigo, paciente, medico, fecha):
+    def __init__(self, codigo, paciente, medico, fecha):
         self._codigo = codigo
         self._paciente = paciente
         self._medico = medico
