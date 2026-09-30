@@ -12,19 +12,8 @@ def datos_iniciales():
     medicos = []
     citas = []
 
-    registrar_paciente(
-        pacientes,
-        "P001",
-        "Ana Torres",
-        "34"
-    )
-
-    registrar_medico(
-        medicos,
-        "M001",
-        "Luis Rojas",
-        "Pediatría"
-    )
+    registrar_paciente(pacientes, "P001", "Ana Torres", "34")
+    registrar_medico(medicos, "M001", "Luis Rojas", "Pediatría")
 
     return pacientes, medicos, citas
 
@@ -33,13 +22,8 @@ def test_caso_normal():
     pacientes, medicos, citas = datos_iniciales()
 
     resultado = programar_cita(
-        citas,
-        pacientes,
-        medicos,
-        "C001",
-        "P001",
-        "M001",
-        "2026-03-10"
+        citas, pacientes, medicos,
+        "C001", "P001", "M001", "2026-03-10"
     )
 
     assert "Cita creada correctamente" in resultado
@@ -50,17 +34,11 @@ def test_caso_extremo_edad_0_y_120():
     pacientes = []
 
     r1 = registrar_paciente(
-        pacientes,
-        "P010",
-        "Bebé Ficticio",
-        "0"
+        pacientes, "P010", "Bebé Ficticio", "0"
     )
 
     r2 = registrar_paciente(
-        pacientes,
-        "P011",
-        "Adulto Mayor Ficticio",
-        "120"
+        pacientes, "P011", "Adulto Mayor Ficticio", "120"
     )
 
     assert "registrado correctamente" in r1
@@ -72,10 +50,7 @@ def test_caso_error_edad_no_numerica():
     pacientes = []
 
     resultado = registrar_paciente(
-        pacientes,
-        "P020",
-        "Paciente Ficticio",
-        "treinta"
+        pacientes, "P020", "Paciente Ficticio", "treinta"
     )
 
     assert "Error" in resultado
@@ -86,17 +61,11 @@ def test_caso_duplicado():
     pacientes = []
 
     registrar_paciente(
-        pacientes,
-        "P030",
-        "Paciente Uno",
-        "40"
+        pacientes, "P030", "Paciente Uno", "40"
     )
 
     resultado = registrar_paciente(
-        pacientes,
-        "P030",
-        "Paciente Dos",
-        "25"
+        pacientes, "P030", "Paciente Dos", "25"
     )
 
     assert "ya está registrado" in resultado
@@ -107,13 +76,8 @@ def test_caso_referencia_invalida():
     pacientes, medicos, citas = datos_iniciales()
 
     resultado = programar_cita(
-        citas,
-        pacientes,
-        medicos,
-        "C002",
-        "P999",
-        "M001",
-        "2026-03-11"
+        citas, pacientes, medicos,
+        "C002", "P999", "M001", "2026-03-11"
     )
 
     assert "no existe un paciente" in resultado
@@ -126,8 +90,7 @@ def test_busqueda_funcional_no_modifica_lista():
     original = list(medicos)
 
     resultado = buscar_medicos_por_especialidad(
-        medicos,
-        "pediatría"
+        medicos, "pediatría"
     )
 
     assert len(resultado) == 1
