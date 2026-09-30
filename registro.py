@@ -4,15 +4,15 @@ from modelos import Paciente, Medico, Cita
 def crear_persona(tipo, codigo, nombre, dato):
     if tipo == "paciente":
         return Paciente(codigo, nombre, dato)
-    if tipo == "medico":
+    elif tipo == "medico":
         return Medico(codigo, nombre, dato)
-    return None
 
 
 def buscar_por_codigo(lista, codigo):
     for elemento in lista:
         if elemento.codigo == codigo:
             return elemento
+
     return None
 
 
@@ -25,11 +25,12 @@ def registrar_paciente(pacientes, codigo, nombre, edad_texto):
     except ValueError:
         return "Error: la edad debe ser un número."
 
-    if edad < 0 or edad > 120:
+    if not 0 <= edad <= 120:
         return "Error: la edad debe estar entre 0 y 120."
 
     paciente = crear_persona("paciente", codigo, nombre, edad)
     pacientes.append(paciente)
+
     return f"Paciente registrado correctamente: {paciente.resumen()}"
 
 
@@ -42,6 +43,7 @@ def registrar_medico(medicos, codigo, nombre, especialidad):
 
     medico = crear_persona("medico", codigo, nombre, especialidad)
     medicos.append(medico)
+
     return f"Médico registrado correctamente: {medico.resumen()}"
 
 
@@ -49,10 +51,11 @@ def programar_cita(citas, pacientes, medicos, codigo_cita,
                    codigo_paciente, codigo_medico, fecha):
 
     paciente = buscar_por_codigo(pacientes, codigo_paciente)
-    medico = buscar_por_codigo(medicos, codigo_medico)
 
     if paciente is None:
         return f"Error: no existe un paciente con código {codigo_paciente}."
+
+    medico = buscar_por_codigo(medicos, codigo_medico)
 
     if medico is None:
         return f"Error: no existe un médico con código {codigo_medico}."
@@ -67,7 +70,9 @@ def programar_cita(citas, pacientes, medicos, codigo_cita,
 
 
 def registrar_atencion(historial, pacientes, codigo_paciente, nota):
-    if not buscar_por_codigo(pacientes, codigo_paciente):
+    paciente = buscar_por_codigo(pacientes, codigo_paciente)
+
+    if paciente is None:
         return f"Error: no existe un paciente con código {codigo_paciente}."
 
     if not nota.strip():
