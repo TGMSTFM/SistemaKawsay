@@ -13,7 +13,7 @@ class Paciente:
         return self._nombre
 
     def resumen(self):
-        return f"Paciente {self._codigo}: {self._nombre} ({self._edad} años)"
+        return f"Paciente {self.codigo}: {self.nombre} ({self._edad} años)"
 
 
 class Medico:
@@ -31,7 +31,7 @@ class Medico:
         return self._especialidad
 
     def resumen(self):
-        return f"Medico {self._codigo}: {self._nombre} - {self._especialidad}"
+        return f"Medico {self.codigo}: {self._nombre} - {self.especialidad}"
 
 
 class Cita:
@@ -52,6 +52,6 @@ class Cita:
     def resumen(self):
         return (
             f"Cita {self._codigo} el {self._fecha}: "
-            f"{self._paciente.nombre} con médico {self._medico.codigo} "
-            f"({self._medico.especialidad})"
+            f"{self.paciente.nombre} con médico {self.medico.codigo} "
+            f"({self.medico.especialidad})"
         )
