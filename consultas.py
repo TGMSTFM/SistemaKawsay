@@ -1,21 +1,26 @@
 def buscar_medicos_por_especialidad(medicos, especialidad):
-    return list(
-        filter(
-            lambda m: m.especialidad.lower() == especialidad.lower(),
-            medicos
-        )
-    )
+    resultados = []
+
+    for medico in medicos:
+        if medico.especialidad.lower() == especialidad.lower():
+            resultados.append(medico)
+
+    return resultados
 
 
 def historial_de_paciente(historial, codigo_paciente):
-    return list(historial.get(codigo_paciente, []))
+    return historial.get(codigo_paciente, [])
 
 
 def citas_de_paciente(citas, codigo_paciente):
-    return list(
-        filter(lambda c: c.paciente.codigo == codigo_paciente, citas)
-    )
+    resultados = []
+
+    for cita in citas:
+        if cita.paciente.codigo == codigo_paciente:
+            resultados.append(cita)
+
+    return resultados
 
 
 def resumenes(personas):
-    return [p.resumen() for p in personas]
+    return [persona.resumen() for persona in personas]
